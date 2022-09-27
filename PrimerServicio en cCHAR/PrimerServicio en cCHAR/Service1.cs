@@ -8,13 +8,17 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
+using System.IO;
 
 namespace PrimerServicio_en_cCHAR
 {
-    using System.IO;
-
-    public partial class Service1
+    public partial class Service1 : ServiceBase
     {
+        public Service1()
+        {
+            InitializeComponent();
+        }
+        
         public System.Timers.Timer TimerServicio = new System.Timers.Timer();
 
         protected void OnStart(string[] args)
