@@ -13,12 +13,8 @@ namespace PrimerServicio_en_cCHAR
 {
     using System.IO;
 
-    public partial class Service1 : ServiceBase
+    public partial class Service1
     {
-        public Service1()
-        {
-            InitializeComponent();
-        }
         public System.Timers.Timer TimerServicio = new System.Timers.Timer();
 
         protected override void OnStart(string[] args)
