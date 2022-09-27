@@ -18,16 +18,16 @@ namespace PrimerServicio_en_cCHAR
         {
             InitializeComponent();
         }
-        
+
         public System.Timers.Timer TimerServicio = new System.Timers.Timer();
 
-        protected void OnStart(string[] args)
+        protected override void OnStart(string[] args)
         {
             // Agregue el código aquí para iniciar el servicio. Este método debería poner
             // en movimiento los elementos para que el servicio pueda funcionar.        
             TimerServicio = new System.Timers.Timer();
-            TimerServicio.Elapsed += ( _,__ )=>EjecutaUnaAccion();
-            TimerServicio.Interval = 6000;
+            TimerServicio.Elapsed += (_, __) => EjecutaUnaAccion();
+            TimerServicio.Interval = 1000;
             TimerServicio.Start();
         }
 
@@ -35,20 +35,21 @@ namespace PrimerServicio_en_cCHAR
         {
             int i;
             for (i = 1; i <= 1000; i++)
-                File.WriteAllText(@"E:\INFORME.TXT", "LINEA: " + i + System.Environment.NewLine);
+                File.AppendAllText(@"C:\INFORME.TXT", "LINEA: " + i + System.Environment.NewLine);
+            
         }
 
-        protected void OnStop()
+        protected override void OnStop()
         {
             // Agregue el código aquí para realizar cualquier anulación necesaria para detener el servicio.
             TimerServicio.Close();
         }
-        protected void OnPause()
+        protected override void OnPause()
         {
             TimerServicio.Stop();
         }
 
-        protected void OnContinue()
+        protected override void OnContinue()
         {
             TimerServicio.Start();
         }
