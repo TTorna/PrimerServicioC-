@@ -17,7 +17,7 @@ namespace PrimerServicio_en_cCHAR
     {
         public System.Timers.Timer TimerServicio = new System.Timers.Timer();
 
-        protected override void OnStart(string[] args)
+        protected void OnStart(string[] args)
         {
             // Agregue el código aquí para iniciar el servicio. Este método debería poner
             // en movimiento los elementos para que el servicio pueda funcionar.        
@@ -34,17 +34,17 @@ namespace PrimerServicio_en_cCHAR
                 File.WriteAllText(@"E:\INFORME.TXT", "LINEA: " + i + System.Environment.NewLine);
         }
 
-        protected override void OnStop()
+        protected void OnStop()
         {
             // Agregue el código aquí para realizar cualquier anulación necesaria para detener el servicio.
             TimerServicio.Close();
         }
-        protected override void OnPause()
+        protected void OnPause()
         {
             TimerServicio.Stop();
         }
 
-        protected override void OnContinue()
+        protected void OnContinue()
         {
             TimerServicio.Start();
         }
